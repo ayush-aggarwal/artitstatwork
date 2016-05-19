@@ -1,0 +1,9 @@
+#!/usr/bin/python
+import cgi,cgitb
+import json
+cgitb.enable()
+print "Content-Type: text/html\n"
+import urllib2
+fs=cgi.FieldStorage()
+placeid=fs.getvalue("placeid")
+print placeid

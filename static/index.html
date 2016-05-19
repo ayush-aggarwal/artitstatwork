@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is a location based search application which uses user's location and get the places near the user">
+    <meta name="author" content="Ayush Aggarwal">
+
+    <title>Place Details - Artist at Work Productions</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    body {
+        padding-top: 70px;
+    }
+    .m1:hover{
+    	background-color:#E0E0E0 !important;
+    }
+    .m1{
+    	font-size:18px;
+    	font-weight:bold;
+    }
+    .locinf{
+    	font-size:16px;
+    	font-weight:bold;
+    }
+    #loading-indicator {
+  	position: absolute;
+ 	left: 10px;
+  	top: 10px;
+	}
+	.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+	height:60px; !important;
+	font-size:20px;
+	}
+	.stylish-input-group button{
+    border:0;
+    background:transparent;
+    height:45px;
+	}
+	.search{
+		display:none;
+		margin-bottom:20px;
+	}
+    </style>
+        <script src="/static/jquery.js"></script>
+    <script src="/static/js.cookie.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/main.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#user" id="usersearch">Artist At Work Productions</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#user" id="usersearch">User Location Search</a>
+                    </li>
+                    <li>
+                        <a href="#custom" id="customsearch">Custom Location Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 id="searchtitle">User Location Search</h1>
+                <p class="lead">Please Allow Your Location so that you can get places near you.</p>
+                <p class="lead" id="loc"><b>Your Location</b></p>
+                <p class="lead" id="error"></p>
+            </div>
+      <div class="col-sm-6 col-sm-offset-3 search">
+        <div class="input-group stylish-input-group myclass">
+            <input type="text" class="form-control"  placeholder="Enter Your Location" id="search-box" >
+            <span class="input-group-addon">
+                <button type="submit" id="search-btn">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>  
+            </span>   
+        </div>
+     </div>
+     		<div class="col-lg-12 text-center">
+     			<ul class="list-unstyled">
+                <li id="latitude" class="locinf"></li>
+                <li id="longitude" class="locinf"></li>
+                </ul>
+             </div>
+        </div>
+        <div class="list-group" id="placelist">
+		</div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      <h2 class="modal-title"><b id="modtitle"></b></h2>
+		    </div>
+		    <div class="modal-body" id="modbody">
+		    </div>
+		    <div class="modal-footer">
+		      <button type="button" class="btn btn-primary" data-dismiss="modal" id="close">Close</button>
+		    </div>
+		  </div>
+		  
+		</div>
+    </div>
+    <!--Loading Modal-->
+    <div class="modal fade bs-example-modal-sm" id="myPleaseWait" tabindex="-1"
+    role="dialog" aria-hidden="true" >
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span class="glyphicon glyphicon-time">
+                    </span> Please Wait
+                 </h4>
+            </div>
+            <div class="modal-body">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info
+                    progress-bar-striped active"
+                    style="width: 100%">
+                    </div>
+                </div>
+             	<div>
+             		<p style="font-size:14px;"> <b>Crunching The Data From API</b></p>
+             	</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
