@@ -1,6 +1,10 @@
 function custom(){
 
-    	var loc=$("#search-box").val().trim();
+    	
+    	
+    	
+    	
+    	    	var loc=$("#search-box").val().trim();
     	$.ajax({
     	url:"/cgi-bin/artistatwork/search.py",
     	data:{"location":loc},
