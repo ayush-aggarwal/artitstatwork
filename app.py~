@@ -42,7 +42,7 @@ def m2():
 		abort(400, 'No data received')
 	else:
 		entity = dict(urlparse.parse_qs(data))
-		placeid = entity['location'][0]
+		location = entity['location'][0]
 		return json.dumps(search.main(location))
 
 
